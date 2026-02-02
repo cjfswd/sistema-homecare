@@ -6,3 +6,5 @@ export * from './financial';
 export * from './logistics';
 export * from './logs';
 export * from './auth';
+export * from './assessments';
+export * from './schedule';

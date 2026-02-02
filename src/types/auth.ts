@@ -1,5 +1,5 @@
 export type PermissionAction = 'view' | 'create' | 'edit' | 'delete' | 'manage';
-export type PermissionEntity = 'patients' | 'professionals' | 'services' | 'evolutions' | 'prescriptions' | 'finances' | 'stock' | 'logs' | 'roles';
+export type PermissionEntity = 'patients' | 'professionals' | 'services' | 'evolutions' | 'prescriptions' | 'finances' | 'stock' | 'logs' | 'roles' | 'notifications';
 
 export interface Permission {
   id: string;

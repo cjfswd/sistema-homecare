@@ -11,7 +11,9 @@ import {
   Activity,
   Shield,
   Users,
-  FileBadge
+  UserCog,
+  FileBadge,
+  Bell
 } from 'lucide-react';
 
 import { authService } from '@/lib/authService';
@@ -32,12 +34,14 @@ interface NavItem {
 const navItems: NavItem[] = [
   { path: '/home', label: 'Início', icon: Home },
   { path: '/clinical', label: 'Evolução Clínica', icon: Stethoscope, entity: 'evolutions' },
-  { path: '/vidas-rh', label: 'Vidas & RH', icon: Users, entity: 'patients' },
+  { path: '/pacientes', label: 'Pacientes', icon: Users, entity: 'patients' },
+  { path: '/profissionais', label: 'Profissionais', icon: UserCog, entity: 'professionals' },
   { path: '/finances', label: 'Financeiro', icon: Wallet, entity: 'finances' },
   { path: '/tabelas', label: 'Tabelas & Config', icon: FileBadge, entity: 'services' },
   { path: '/reports', label: 'Relatórios', icon: BarChart3, entity: 'logs' },
   { path: '/stock', label: 'Estoque', icon: Box, entity: 'stock' },
   { path: '/logs', label: 'Logs do Sistema', icon: Activity, entity: 'logs' },
+  { path: '/notifications', label: 'Notificações', icon: Bell, entity: 'notifications' },
   { path: '/auth', label: 'Controle de Acesso', icon: Shield, entity: 'roles' },
 ];
 

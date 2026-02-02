@@ -10,6 +10,11 @@ export const INITIAL_PERMISSIONS: Permission[] = [
   { id: 'p2', action: 'create', entity: 'patients' },
   { id: 'p3', action: 'edit', entity: 'patients' },
   { id: 'p4', action: 'delete', entity: 'patients' },
+  // Professionals
+  { id: 'pf1', action: 'view', entity: 'professionals' },
+  { id: 'pf2', action: 'create', entity: 'professionals' },
+  { id: 'pf3', action: 'edit', entity: 'professionals' },
+  { id: 'pf4', action: 'delete', entity: 'professionals' },
   // Evolutions
   { id: 'e1', action: 'view', entity: 'evolutions' },
   { id: 'e2', action: 'create', entity: 'evolutions' },
@@ -32,6 +37,11 @@ export const INITIAL_PERMISSIONS: Permission[] = [
   { id: 'v2', action: 'manage', entity: 'services' },
   // Roles/Auth
   { id: 'r1', action: 'manage', entity: 'roles' },
+  // Notifications
+  { id: 'n1', action: 'view', entity: 'notifications' },
+  { id: 'n2', action: 'create', entity: 'notifications' },
+  { id: 'n3', action: 'edit', entity: 'notifications' },
+  { id: 'n4', action: 'delete', entity: 'notifications' },
 ];
 
 // =============================================================================
@@ -43,7 +53,7 @@ export const INITIAL_ROLES: Role[] = [
     id: 'role-admin',
     name: 'Administrador',
     description: 'Acesso total ao sistema',
-    permissions: INITIAL_PERMISSIONS.map(p => p.id)
+    permissions: [...INITIAL_PERMISSIONS.map(p => p.id)]
   },
   {
     id: 'role-doctor',

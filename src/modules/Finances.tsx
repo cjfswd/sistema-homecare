@@ -1,23 +1,28 @@
 import { useState } from 'react';
-import { 
-  Wallet, 
+import {
+  Wallet,
   Calculator,
-  FileText
+  FileText,
+  TrendingUp,
+  TrendingDown
 } from 'lucide-react';
 
-import type { PriceTable, Budget } from '@/types';
-import { INITIAL_PRICE_TABLES, INITIAL_BUDGETS } from '@/lib/mockData';
+import type { PriceTable, Budget, AccountsReceivable, AccountsPayable } from '@/types';
+import { INITIAL_PRICE_TABLES, INITIAL_BUDGETS, INITIAL_ACCOUNTS_RECEIVABLE, INITIAL_ACCOUNTS_PAYABLE } from '@/lib/mockData';
 
 import { Button, type Tab } from '@/components/ui';
 import { BudgetModal, BudgetList } from '@/components/financial';
+import { AccountsReceivableList, AccountsPayableList } from '@/components/patients';
 import { loggingService } from '@/lib/loggingService';
 
 export default function FinancesModule() {
-  const [activeTab, setActiveTab] = useState<'budgets'>('budgets');
-  
+  const [activeTab, setActiveTab] = useState<'budgets' | 'receivable' | 'payable'>('budgets');
+
   // States
   const [tables] = useState<PriceTable[]>(INITIAL_PRICE_TABLES);
   const [budgets, setBudgets] = useState<Budget[]>(INITIAL_BUDGETS);
+  const [accountsReceivable] = useState<AccountsReceivable[]>(INITIAL_ACCOUNTS_RECEIVABLE);
+  const [accountsPayable] = useState<AccountsPayable[]>(INITIAL_ACCOUNTS_PAYABLE);
   const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false);
 
   // --- Budget Logic ---
@@ -37,6 +42,8 @@ export default function FinancesModule() {
 
   const TABS: Tab[] = [
     { id: 'budgets', label: 'Orçamentos (PAD)', icon: Calculator },
+    { id: 'receivable', label: 'Contas a Receber', icon: TrendingUp },
+    { id: 'payable', label: 'Contas a Pagar', icon: TrendingDown },
   ];
 
   return (
@@ -61,9 +68,9 @@ export default function FinancesModule() {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
             return (
-              <button 
+              <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as 'budgets')}
+                onClick={() => setActiveTab(tab.id as 'budgets' | 'receivable' | 'payable')}
                 className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2
                   ${active ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'}`}
               >
@@ -76,7 +83,23 @@ export default function FinancesModule() {
 
       <main className="p-8 max-w-7xl mx-auto">
         {activeTab === 'budgets' && (
-            <BudgetList budgets={budgets} tables={tables} />
+          <BudgetList budgets={budgets} tables={tables} />
+        )}
+
+        {activeTab === 'receivable' && (
+          <AccountsReceivableList
+            accounts={accountsReceivable}
+            onSelectAccount={(account) => console.log('Account selected:', account)}
+            onNewAccount={() => console.log('New account receivable')}
+          />
+        )}
+
+        {activeTab === 'payable' && (
+          <AccountsPayableList
+            accounts={accountsPayable}
+            onSelectAccount={(account) => console.log('Account payable selected:', account)}
+            onNewAccount={() => console.log('New account payable')}
+          />
         )}
       </main>
 
