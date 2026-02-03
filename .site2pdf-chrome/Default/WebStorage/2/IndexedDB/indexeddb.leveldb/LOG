@@ -1,0 +1,7 @@
+2026/02/03-12:04:58.809 53d4 Creating DB C:\Users\Usuario\Desktop\sistema-homecare-main\sistema-homecare-main\.site2pdf-chrome\Default\WebStorage\2\IndexedDB\indexeddb.leveldb since it was missing.
+2026/02/03-12:04:58.844 53d4 Reusing MANIFEST C:\Users\Usuario\Desktop\sistema-homecare-main\sistema-homecare-main\.site2pdf-chrome\Default\WebStorage\2\IndexedDB\indexeddb.leveldb/MANIFEST-000001
+2026/02/03-12:05:01.621 5534 Level-0 table #5: started
+2026/02/03-12:05:01.649 5534 Level-0 table #5: 3755 bytes OK
+2026/02/03-12:05:01.652 5534 Delete type=0 #3
+2026/02/03-12:05:01.654 3688 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/03-12:05:05.236 1aa8 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)

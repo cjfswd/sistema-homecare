@@ -124,6 +124,18 @@ export default function AuthorizationModule() {
           </div>
           
           <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              onClick={() => {
+                if (confirm('Isso irá resetar todas as permissões para os valores padrão. Deseja continuar?')) {
+                  authService.resetPermissions();
+                }
+              }}
+              icon={Shield}
+              title="Resetar permissões para valores padrão"
+            >
+              Resetar Permissões
+            </Button>
             <Button variant="ghost" onClick={() => setIsAssignModalOpen(true)} icon={UserPlus}>
               Vincular Usuário
             </Button>
@@ -280,7 +292,7 @@ export default function AuthorizationModule() {
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase mb-3 block">Permissões de Acesso</label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
-              {['patients', 'professionals', 'services', 'evolutions', 'prescriptions', 'stock', 'finances', 'logs', 'roles'].map(entity => (
+              {['patients', 'professionals', 'services', 'evolutions', 'prescriptions', 'stock', 'finances', 'logs', 'roles', 'notifications'].map(entity => (
                 <div key={entity} className="space-y-2">
                   <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1 mb-2">{entity}</h5>
                   <div className="space-y-1.5">

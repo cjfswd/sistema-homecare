@@ -1,4 +1,4 @@
-import { INITIAL_PERMISSIONS, INITIAL_ROLES, INITIAL_USER_ROLES } from './mockData';
+import { INITIAL_PERMISSIONS, INITIAL_ROLES, INITIAL_USER_ROLES } from './mockData/auth';
 import type { Role, Permission, UserRoleAssignment, PermissionAction, PermissionEntity } from '@/types';
 
 const ROLES_KEY = 'homecare_roles';
@@ -106,6 +106,15 @@ class AuthService {
 
   public checkCurrent(action: PermissionAction, entity: PermissionEntity): boolean {
     return this.hasPermission(this.getCurrentUserId(), action, entity);
+  }
+
+  // Reset permissions to defaults (useful when new permissions are added)
+  public resetPermissions() {
+    localStorage.removeItem(ROLES_KEY);
+    localStorage.removeItem(ASSIGNMENTS_KEY);
+    this.loadFromStorage();
+    window.dispatchEvent(new CustomEvent('auth-updated'));
+    console.log('Permissões resetadas para os valores padrão');
   }
 }
 
